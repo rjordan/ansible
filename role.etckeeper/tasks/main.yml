@@ -1,0 +1,7 @@
+---
+- name: Etckeeper Playbook
+  apt: "pkg=etckeeper state=latest"
+ 
+- name: Set for git
+  lineinfile: dest=/etc/etckeeper/etckeeper.conf regexp=^VCS= line=VCS="git"
+  lineinfile: dest=/etc/etckeeper/etckeeper.conf regexp=^VCS="bzr" state=absent

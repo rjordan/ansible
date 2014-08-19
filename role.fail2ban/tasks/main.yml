@@ -1,0 +1,7 @@
+---
+- name: Fail2Ban Playbook
+  apt: "pkg=fail2ban state=latest"
+ 
+- name: Ensure Fail2Ban Running
+  service: "name=fail2ban state=running enabled=yes"
+

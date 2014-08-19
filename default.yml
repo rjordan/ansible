@@ -1,0 +1,12 @@
+---
+- name: default playbook 
+  hosts: local
+  sudo: True
+
+  roles:
+    - role.ufw
+    - role.etckeeper
+    - role.ntp
+    - role.git
+    - role.ssh
+    - role.fail2ban

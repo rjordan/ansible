@@ -1,0 +1,7 @@
+---
+- name: SSH Playbook
+  apt: "pkg=ssh state=latest"
+ 
+- name: Ensure SSH Running
+  service: "name=ssh state=running enabled=yes"
+
