@@ -5,3 +5,9 @@
 - name: Set for git
   lineinfile: dest=/etc/etckeeper/etckeeper.conf regexp=^VCS= line=VCS="git"
   lineinfile: dest=/etc/etckeeper/etckeeper.conf regexp=^VCS="bzr" state=absent
+  
+- stat: path=/etc/.git
+  register: p
+  
+- command: etckeeper init;etckeeper commit -m "initial"
+  when: p.stat.isdir is not defined

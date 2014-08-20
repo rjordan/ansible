@@ -1,9 +1,10 @@
 ---
 - name: default playbook 
-  hosts: local
+  hosts: all
   sudo: True
 
   roles:
+    - role.ansible
     - role.ufw
     - role.etckeeper
     - role.ntp
