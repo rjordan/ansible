@@ -1,13 +1,18 @@
 ---
 - name: Etckeeper Playbook
   apt: "pkg=etckeeper state=latest"
- 
+
 - name: Set for git
-  lineinfile: dest=/etc/etckeeper/etckeeper.conf regexp=^VCS= line=VCS="git"
-  lineinfile: dest=/etc/etckeeper/etckeeper.conf regexp=^VCS="bzr" state=absent
+  replace: dest=/etc/etckeeper/etckeeper.conf regexp='^VCS="bzr"' replace='#VCS="bzr"' 
+  replace: dest=/etc/etckeeper/etckeeper.conf regexp='^#VCS="git"' replace='VCS="git"' 
   
 - stat: path=/etc/.git
-  register: p
+  register: check_init
   
-- command: etckeeper init;etckeeper commit -m "initial"
-  when: p.stat.isdir is not defined
+- command: "etckeeper init"
+  register: inited
+  when: check_init.stat.exists == false
+ 
+- command: "etckeeper commit -m Initial"
+  when: inited.changed == true
+
