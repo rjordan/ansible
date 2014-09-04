@@ -11,4 +11,5 @@
     - role.ssh
     - role.java-runtime
     - role.ruby-system
+    - role.chrome
 
