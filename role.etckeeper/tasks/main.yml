@@ -2,8 +2,10 @@
 - name: Etckeeper Playbook
   apt: "pkg=etckeeper state=latest"
 
-- name: Set for git
+- name: Unset for bzr
   replace: dest=/etc/etckeeper/etckeeper.conf regexp='^VCS="bzr"' replace='#VCS="bzr"' 
+
+- name: Set for git
   replace: dest=/etc/etckeeper/etckeeper.conf regexp='^#VCS="git"' replace='VCS="git"' 
   
 - stat: path=/etc/.git

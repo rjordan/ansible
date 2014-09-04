@@ -1,17 +1,14 @@
 ---
-- name: default playbook 
-  hosts: all
+- name: Developer Playbook 
+  hosts: local
   sudo: True
 
   roles:
     - role.ansible
     - role.docker
-    - role.ufw
-    - role.etckeeper
     - role.ntp
     - role.git
     - role.ssh
-    - role.fail2ban
-    - role.curl
     - role.java-runtime
+    - role.ruby-system
 
