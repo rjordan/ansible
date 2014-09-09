@@ -6,5 +6,10 @@
   apt_repository: "repo='ppa:ansible/ansible' update_cache=yes"
 
 - name: Install Ansible
+  register: result
   apt: "pkg=ansible state=latest"  
  
+- fail: msg="Ansible updated please update"
+  when: result.changed == true
+
+  
