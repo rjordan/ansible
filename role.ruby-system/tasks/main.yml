@@ -2,8 +2,14 @@
 - name: Add Ruby PPA
   apt_repository: "repo='ppa:brightbox/ruby-ng' update_cache=yes" 
 
-- name: Ruby (System) Playbook
+- name: Build Essential 
   apt: "pkg=build-essential state=latest"
+
+- name: Libs for Cabybara-webkit
   apt: "pkg=libqtwebkit-dev state=latest"
+
+- name: Ruby (System)
   apt: "pkg=ruby2.1 state=latest"
+
+- name: Bundler (System)
   apt: "pkg=bundler state=latest"

@@ -6,6 +6,7 @@
   roles:
     - role.ansible
     - role.docker
+    - role.curl
     - role.ntp
     - role.git
     - role.ssh
