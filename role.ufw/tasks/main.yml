@@ -1,9 +1,0 @@
----
-- name: UFW Playbook
-  apt: "pkg=ufw state=latest"
- 
-- name: Ensure UFW Running
-  ufw: "state=enabled"
-
-- name: Allow SSH
-  ufw: "rule=allow port=22"

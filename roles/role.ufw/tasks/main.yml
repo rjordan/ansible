@@ -1,0 +1,22 @@
+---
+- name: UFW Playbook
+  apt: pkg=ufw state=latest
+ 
+- name: Ensure UFW Running
+  ufw: state=enabled
+
+- name: Allow SSH
+  ufw: rule=allow port=22
+  when: ufw_allow_ssh
+  
+- name: Allow LDAP
+  ufw: rule=allow port=389  
+  when: ufw_allow_ldap
+  
+- name: Allow DNS
+  ufw: rule=allow port=53  
+  when: ufw_allow_dns  
+  
+- name: Allow Rails
+  ufw: rule=allow port=3000 
+  when: ufw_allow_rails   

@@ -1,17 +1,33 @@
 ---
-- name: default playbook 
+- name: Default programs 
   hosts: all
-  sudo: True
-
+  sudo: true
   roles:
-    - role.ansible
-    - role.docker
-    - role.ufw
-    - role.etckeeper
-    - role.ntp
     - role.git
+    - role.etckeeper
     - role.ssh
     - role.fail2ban
     - role.curl
-    - role.java-runtime
+    - role.ntp
 
+- name: Development
+  hosts: 
+    - megatraveler
+  sudo: true
+  roles:
+    - role.java-runtime
+    - role.ufw #TODO Move up with more config
+
+- name: Docker
+  hosts: 
+    - megatraveler
+    - docker
+  sudo: true  
+  roles:
+    - role.docker
+  
+- name: Ansible server
+  hosts: ansible
+  sudo: true
+  roles:
+    - role.ansible

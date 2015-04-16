@@ -1,2 +1,2 @@
 #!/bin/bash
-ansible-playbook -c local default.yml -K
+ansible-playbook default.yml -K -k

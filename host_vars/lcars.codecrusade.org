@@ -1,0 +1,3 @@
+---
+ufw_allow_ldap: true
+ufw_allow_dns: true

@@ -11,3 +11,12 @@
 - name: Ensure docker is running
   service: name=docker state=running enabled=yes
 
+- name: Install PIP
+  apt: pkg=python-pip state=latest 
+
+- name: Ensure latest PIP
+  pip: name=pip state=latest 
+  
+- name: Docker-Py
+  pip: name=docker-py state=latest 
+
