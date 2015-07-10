@@ -1,8 +1,7 @@
 ---
 - name: Developer Playbook 
   hosts: local
-  sudo: True
-
+  sudo: true
   roles:
     - role.ansible
     - role.docker
