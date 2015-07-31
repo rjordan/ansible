@@ -1,4 +1,6 @@
 ---
 - name: Java Runtime Playbook
-  apt: "pkg=openjdk-7-jre state=latest"
- 
+  apt: pkg=openjdk-8-jdk state=latest
+  apt: pkg=openjdk-8-jdk:i386 state=latest
+  apt: pkg=icedtea-plugin state=latest
+
