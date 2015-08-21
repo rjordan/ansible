@@ -1,0 +1,7 @@
+---
+- name: Nginx Playbook
+  apt: pkg=nginx state=latest
+ 
+- name: Ensure Nginx Running
+  service: name=nginx state=running 
+

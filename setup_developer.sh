@@ -1,2 +1,2 @@
 #!/bin/bash
-ansible-playbook -c local developer.yml -K
+ansible-playbook -i hosts -c local developer.yml -K
