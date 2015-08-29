@@ -1,16 +1,18 @@
 ---
-- name: Developer Playbook 
-  hosts: local
+- name: Global Playbook 
+  hosts: all
   sudo: true
   roles:
     - role.ubuntu-updates
-    - role.ansible
-    - role.docker
     - role.curl
     - role.ntp
-    - role.git
     - role.ssh
+- name: Development Playbook 
+  hosts: dev-boxs
+  sudo: true
+  roles:
+    - role.ansible
+    - role.docker
+    - role.git
     - role.java-runtime
-#    - role.ruby-system
-#    - role.chrome
 
