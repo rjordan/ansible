@@ -1,2 +1,3 @@
 #!/bin/bash
-ansible-playbook default.yml -K -k
+ansible-playbook codecrusade.yml -Kk --ask-vault-pass -i hosts
+#ansible-playbook containers.yml -Kk --ask-vault-pass -i hosts

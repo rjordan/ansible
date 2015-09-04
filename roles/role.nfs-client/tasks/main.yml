@@ -1,0 +1,6 @@
+---
+- name: NFS Client
+  apt: pkg=nfs-common state=latest
+  
+
+

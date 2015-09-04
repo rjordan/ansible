@@ -1,3 +1,6 @@
 ---
-ufw_allow_ldap: true
-ufw_allow_dns: true
+ufw_allow_ports: 
+  - 22
+  - 389
+  - 53  
+reboot_time: 04:00

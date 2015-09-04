@@ -1,0 +1,41 @@
+---
+- name: Default programs 
+  hosts: all
+  sudo: true
+  tasks:
+    - name: Dump vars
+      action: template src=templates/dumpall.j2 dest=/tmp/ansible.all
+      changed_when: false
+  roles:
+    - role.ubuntu-updates
+    - role.ssh
+    - role.curl
+    - role.ntp
+    - role.ufw
+- name: Workstations    
+  hosts: 
+    - workstations
+  sudo: true
+  roles:
+    - role.java-runtime    
+    - role.nfs-client
+    - role.chrome
+- name: Development
+  hosts: 
+    - dev-boxes
+  sudo: true
+  roles:
+    - role.ansible
+    - role.docker
+    - role.git
+    - role.fail2ban
+- name: Docker
+  hosts: 
+    - docker
+  sudo: true  
+  roles:
+    - role.docker
+    - role.nfs-client
+  tasks:
+    - mount: name=/srv/docker src=nfs.codecrusade.org:docker fstype=nfs opts=noatime state=mounted
+

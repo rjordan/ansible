@@ -1,0 +1,4 @@
+---  
+  smtp_domain: codecrusade.org
+  smtp_host: mail.codecrusade.org
+  smtp_port: 25

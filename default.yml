@@ -3,31 +3,24 @@
   hosts: all
   sudo: true
   roles:
-    - role.git
-    - role.etckeeper
+    - role.ubuntu-updates
     - role.ssh
-    - role.fail2ban
     - role.curl
     - role.ntp
-
 - name: Development
   hosts: 
-    - megatraveler
+    - dev-boxs
   sudo: true
   roles:
-    - role.java-runtime
     - role.ufw #TODO Move up with more config
-
+    - role.ansible
+    - role.docker
+    - role.git
+    - role.java-runtime    
 - name: Docker
   hosts: 
-    - megatraveler
     - docker
   sudo: true  
   roles:
     - role.docker
-  
-- name: Ansible server
-  hosts: ansible
-  sudo: true
-  roles:
-    - role.ansible
+

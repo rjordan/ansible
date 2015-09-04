@@ -16,7 +16,7 @@
   stat: path=/var/run/reboot-required get_md5=no
 
 - name: Schedule a reboot
-  command: "/sbin/shutdown -r 04:00"
-  when: file.stat.exists == true
+  command: "/sbin/shutdown -r {{reboot_time}}"
+  when: file.stat.exists == true and reboot_time is defined
  
 

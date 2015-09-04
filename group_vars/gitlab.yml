@@ -1,0 +1,14 @@
+---
+  gitlab_host: gitlab.codecrusade.org
+  gitlab_ssh_port: 1022
+  gitlab_web_port: 80
+  gitlab_email: gitlab@codecrusade.org
+  db_type: postgres
+  db_host: 192.168.0.100
+  db_name: gitlabhq_production
+  redis_host: docker.codecrusade.org
+  redis_port: 6379         
+  smtp_domain: codecrusade.org
+  smtp_host: mail.codecrusade.org
+  smtp_port: 25
+

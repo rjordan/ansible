@@ -1,5 +1,4 @@
 ---
-ufw_allow_ssh: true
-ufw_allow_ldap: false
-ufw_allow_rails: false
-ufw_allow_dns: false
+ufw_allow_ports:
+  - 22
+
