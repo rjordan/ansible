@@ -1,0 +1,42 @@
+$TTL    4h
+$ORIGIN codecrusade.org.
+@           IN      SOA     ns.codecrusade.org. root.codecrusade.org. (
+                            2013092801    ; Serial
+                            1d            ; slave refresh (1 day)
+                            2h            ; slave retry time in case of a problem (2 hours)
+                            2w            ; slave expiration time (2 weeks)
+                            2d            ; minimum caching time in case of failed lookups (2 days)
+                            )
+@		IN	NS	lcars.codecrusade.org.
+prt1		IN	A	192.168.0.50
+megatraveler    IN	A	192.168.0.60
+traveler2	IN	A	192.168.0.61
+ubuntu-dvr	IN	A	192.168.0.100
+gamer		IN	A	192.168.0.101
+vm-host		IN	A	192.168.0.110
+web1		IN	A	192.168.0.185
+lcars		IN	A	192.168.0.200
+docker		IN	A	192.168.0.201
+docker2         IN	A	192.168.0.202
+deepspace9      IN	A	24.196.176.200
+
+ns		IN	CNAME	lcars
+puppet		IN	CNAME	lcars
+ldap            IN	CNAME   lcars
+b3r3 		IN	CNAME	web1
+geopoke		IN	CNAME	web1
+filepile	IN	CNAME	web1
+gitlab          IN      CNAME   web1
+mail		IN	CNAME	ubuntu-dvr
+nfs		IN	CNAME	ubuntu-dvr
+www          	IN	CNAME	ubuntu-dvr
+chat		IN	CNAME	ubuntu-dvr
+minecraft	IN	CNAME	docker
+minecraft1      IN	CNAME	docker
+minecraft2      IN	CNAME	docker
+mongo.services	IN	CNAME   docker2
+
+_xmpp-server._tcp.codecrusade.org. IN SRV 5 0 5269 xmpp-server.l.google.com.
+_minecraft._tcp.minecraft1.codecrusade.org. IN SRV 5 0 25565 docker.
+_minecraft._tcp.minecraft2.codecrusade.org. IN SRV 5 0 25566 docker.
+

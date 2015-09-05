@@ -8,6 +8,11 @@ megatraveler.codecrusade.org
 [lcars]
 lcars.codecrusade.org
 
+[ubuntu-dvr]
+ubuntu-dvr.codecrusade.org
+
+[web1]
+web1.codecrusade.org
 
 # GROUPS
 [docker]

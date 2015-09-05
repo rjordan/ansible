@@ -52,7 +52,7 @@
         name: filepile
         image: docker.codecrusade.org/filepile
         pull: always
-        state: started
+        state: stopped
         registry: docker.codecrusade.org
         insecure_registry: yes
         ports:
@@ -62,7 +62,7 @@
         name: geopoke
         image: docker.codecrusade.org/geopoke
         pull: always
-        state: started
+        state: stopped
         registry: docker.codecrusade.org
         insecure_registry: yes
         ports:

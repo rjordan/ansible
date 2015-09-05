@@ -8,5 +8,8 @@
   
 - name: Ensure UFW Running
   ufw: state=enabled
+  when: firewall_enabled==true
 
-
+- name: Ensure UFW NOT Running
+  ufw: state=disabled
+  when: firewall_enabled==false
