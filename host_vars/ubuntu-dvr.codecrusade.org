@@ -3,5 +3,5 @@ ufw_allow_ports:
 - 22    #SSH
 - 2049  #NFS
 - 5432  #Postges 
-- 142   #IMAP
+- 143   #IMAP
 - 25    #SMTP

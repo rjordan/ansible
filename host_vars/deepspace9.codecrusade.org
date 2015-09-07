@@ -1,0 +1,4 @@
+---
+ufw_allow_ports: 
+  - 22
+reboot_time: 04:00
