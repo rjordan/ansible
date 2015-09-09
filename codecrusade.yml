@@ -36,6 +36,6 @@
   roles:
     - role.docker
     - role.nfs-client
-  tasks:
-    - mount: name=/srv/docker-data src=nfs.codecrusade.org:/srv/docker-data fstype=nfs4 opts=noatime state=mounted
+#  tasks:
+#    - mount: name=/srv/docker-data src=nfs.codecrusade.org:/srv/docker-data fstype=nfs4 opts=noatime state=mounted
 

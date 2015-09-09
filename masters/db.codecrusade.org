@@ -29,10 +29,14 @@ mail		IN	CNAME	ubuntu-dvr
 nfs		IN	CNAME	ubuntu-dvr
 www          	IN	CNAME	ubuntu-dvr
 chat		IN	CNAME	ubuntu-dvr
+redis	IN	CNAME  ubuntu-dvr
+postgres IN CNAME ubuntu-dvr
+
 minecraft	IN	CNAME	docker
+registry  IN  CNAME docker
 minecraft1      IN	CNAME	docker
 minecraft2      IN	CNAME	docker
-mongo.services	IN	CNAME   docker2
+mongo	IN	CNAME   docker
 
 _xmpp-server._tcp.codecrusade.org. IN SRV 5 0 5269 xmpp-server.l.google.com.
 _minecraft._tcp.minecraft1.codecrusade.org. IN SRV 5 0 25565 docker.

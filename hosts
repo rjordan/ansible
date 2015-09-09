@@ -17,9 +17,13 @@ web1.codecrusade.org
 [deepspace9]
 deepspace9.codecrusade.org
 
+[docker1]
+docker.codecrusade.org
+
 # GROUPS
 [docker]
 docker.codecrusade.org
+ubuntu-dvr.codecrusade.org
 
 [workstations]
 megatraveler.codecrusade.org

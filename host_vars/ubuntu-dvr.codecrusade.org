@@ -5,3 +5,6 @@ ufw_allow_ports:
 - 5432  #Postges 
 - 143   #IMAP
 - 25    #SMTP
+- 80    #HTTP
+- 443   #HTTPS
+- 6379  #REDIS
