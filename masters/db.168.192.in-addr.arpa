@@ -1,18 +1,19 @@
 $TTL    4h
-@           IN      SOA     ns.codecrusade.org. root.codecrusade.org. (
+@           IN      SOA     ns.codecrusade.org. lcars.codecrusade.org. (
                             2013092801    ; Serial
                             1d            ; slave refresh (1 day)
                             2h            ; slave retry time in case of a problem (2 hours)
                             2w            ; slave expiration time (2 weeks)
                             2d            ; minimum caching time in case of failed lookups (2 days)
                             )
-@	IN	NS	ns.codecrusade.org.
-50	IN	PTR	prt1.codecrusade.org.
-100	IN	PTR	ubuntu-dvr.codecrusade.org.
-100	IN	PTR	mail.codecrusade.org.
-101	IN	PTR	gamer.codecrusade.org.
-110	IN	PTR	vm-host.codecrusade.org.
-185	IN	PTR	web1.codecrusade.org.
-200	IN	PTR	lcars.codecrusade.org.
-201 IN	PTR	docker.codecrusade.org.
+     IN  NS   lcars.codecrusade.org.
 
+$ORIGIN 0.168.192.in-addr.arpa.
+50   IN  PTR  prt1.codecrusade.org.
+100  IN  PTR  ubuntu-dvr.codecrusade.org.
+100  IN  PTR  mail.codecrusade.org.
+101  IN  PTR  gamer.codecrusade.org.
+110  IN  PTR  vm-host.codecrusade.org.
+185  IN  PTR  web1.codecrusade.org.
+200  IN  PTR  lcars.codecrusade.org.
+201  IN  PTR  docker.codecrusade.org.

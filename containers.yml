@@ -81,26 +81,6 @@
 - name: Containers Playbook 
   hosts: docker1
   tasks:
-    - name: filepile
-      docker:
-        name: filepile
-        image: docker.codecrusade.org/filepile
-        pull: always
-        state: stopped
-        registry: docker.codecrusade.org
-        insecure_registry: yes
-        ports:
-        - "3001:3000"
-    - name: geopoke
-      docker:
-        name: geopoke
-        image: docker.codecrusade.org/geopoke
-        pull: always
-        state: stopped
-        registry: docker.codecrusade.org
-        insecure_registry: yes
-        ports:
-        - "3000:3000"
     - name: registry
       docker:
         name: registry
@@ -113,6 +93,26 @@
         - "80:5000"
         volumes:
         - "/srv/docker-data/docker-index:/registry"  
+#    - name: filepile
+#      docker:
+#        name: filepile
+#        image: docker.codecrusade.org/filepile
+#        pull: always
+#        state: stopped
+#        registry: docker.codecrusade.org
+#        insecure_registry: yes
+#        ports:
+#        - "3001:3000"
+#    - name: geopoke
+#      docker:
+#        name: geopoke
+#        image: docker.codecrusade.org/geopoke
+#        pull: always
+#        state: stopped
+#        registry: docker.codecrusade.org
+#        insecure_registry: yes
+#        ports:
+#        - "3000:3000"
     - name: mumble
       docker:
         name: mumble
