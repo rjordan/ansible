@@ -7,6 +7,16 @@
   - group_vars/gitlab.yml
   - group_vars/secure/gitlab.yml
   tasks:
+    - name: registrator
+      docker:
+        name: registrator
+        image: gliderlabs/registrator
+        pull: always
+        state: started
+        net: host
+        command: 'consul://192.168.0.100:8500 "-ip 192.168.0.100"'
+        volumes:
+        - "/var/run/docker.sock:/tmp/docker.sock"
     - name: redis
       docker:
         name: redis
@@ -81,18 +91,18 @@
 - name: Containers Playbook 
   hosts: docker1
   tasks:
-    - name: registry
-      docker:
-        name: registry
-        image: registry
-        pull: always
-        state: started
-        env:
-          STORAGE_PATH: /registry
-        ports:
-        - "80:5000"
-        volumes:
-        - "/srv/docker-data/docker-index:/registry"  
+#    - name: registry
+#      docker:
+#        name: registry
+#        image: registry
+#        pull: always
+#        state: started
+#        env:
+#          STORAGE_PATH: /registry
+#        ports:
+#        - "80:5000"
+#        volumes:
+#        - "/srv/docker-data/docker-index:/registry"  
 #    - name: filepile
 #      docker:
 #        name: filepile
@@ -127,7 +137,7 @@
       docker:
         name: elasticsearch
         image: docker.codecrusade.org/elasticsearch
-        pull: always
+        # pull: always
         state: started
         registry: docker.codecrusade.org
         insecure_registry: yes
@@ -155,7 +165,7 @@
       docker:
         name: minecraft1
         image: docker.codecrusade.org/bukkit
-        pull: always
+        # pull: always
         state: started
         registry: docker.codecrusade.org
         insecure_registry: yes
@@ -168,7 +178,7 @@
       docker:
         name: minecraft2
         image: docker.codecrusade.org/bukkit
-        pull: always
+        # pull: always
         state: stopped
         registry: docker.codecrusade.org
         insecure_registry: yes

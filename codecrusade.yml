@@ -29,6 +29,7 @@
     - role.docker
     - role.git
     - role.fail2ban
+    - role.scala
 - name: Docker
   hosts: 
     - docker

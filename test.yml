@@ -1,20 +1,26 @@
 ---
-- name: Default programs 
+- name: Default programs
   hosts: all
   sudo: true
   roles:
   - role: role.bind
+    bind_config_recursion: "yes"
     bind_config_master_zones:
       - name: codecrusade.org
       - name: 168.192.in-addr.arpa
+    bind_config_forward_zones:
+      - name: Domains for consul
+        forwarders:
+          - "127.0.0.1 port 8600"
+        forward: only
+        zones:
+          - consul
     bind_config_master_forwarders:
       - "8.8.8.8"
       - "8.8.4.4"
-      - "24.217.201.67"  
 #    - role.ubuntu-updates
 #    - role: role.dns
 #      dns_domain: "codecrusade.org"
-#      dns_nameservers: 
+#      dns_nameservers:
 #      - '192.168.0.200'
 #      - '8.8.8.8'
-      

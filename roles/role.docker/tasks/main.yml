@@ -1,12 +1,21 @@
 ---
 - name: Add Docker apt key
-  apt_key: id=36A1D7869245C8950F966E92D8576A8BA88D21E9 keyserver=hkp://keyserver.ubuntu.com:80 state=present
+  apt_key: id=58118E89F3A912897C070ADBF76221572C52609D keyserver=hkp://pgp.mit.edu:80 state=present
 
 - name: Add Docker PPA
-  apt_repository: repo='deb https://get.docker.io/ubuntu docker main' update_cache=yes
+  apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-trusty main' update_cache=yes
+  when: ansible_distribution == 'CentOS' and ansible_distribution_version == '14.04'
+
+- name: Add Docker PPA
+  apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-vivid main' update_cache=yes
+  when: ansible_distribution == 'CentOS' and ansible_distribution_version == '15.04'
+
+- name: Add Docker PPA
+  apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-wiley main' update_cache=yes
+  when: ansible_distribution == 'CentOS' and ansible_distribution_version == '15.10'
 
 - name: Install Docker
-  apt: pkg=lxc-docker state=latest 
+  apt: pkg=docker-engine state=latest 
 
 - name: Ensure docker is running
   service: name=docker state=running enabled=yes

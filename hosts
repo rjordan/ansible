@@ -14,8 +14,8 @@ ubuntu-dvr.codecrusade.org
 [web1]
 web1.codecrusade.org
 
-[deepspace9]
-deepspace9.codecrusade.org
+# [deepspace9]
+# deepspace9.codecrusade.org
 
 [docker1]
 docker.codecrusade.org

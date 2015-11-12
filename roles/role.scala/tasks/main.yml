@@ -1,0 +1,36 @@
+- name: Check Scala installed
+  command: dpkg-query -W scala
+  register: scala_check_deb
+  failed_when: scala_check_deb.rc > 1
+  changed_when: scala_check_deb.rc == 1
+  
+- name: Scala is downloaded
+  get_url:
+    url=http://www.scala-lang.org/files/archive/scala-{{scala_version}}.deb
+    dest=/tmp/scala-{{scala_version}}.deb
+  when: scala_check_deb.rc == 1  
+
+- name: Scala is present
+  apt:
+    name: Scala
+    deb: /tmp/scala-{{scala_version}}.deb
+  tags: [scala]
+  when: scala_check_deb.rc == 1  
+
+- name: Check SBT installed
+  command: dpkg-query -W sbt
+  register: sbt_check_deb
+  failed_when: sbt_check_deb.rc > 1
+  changed_when: sbt_check_deb.rc == 1
+
+- name: Download SBT
+  get_url:
+    url=https://dl.bintray.com/sbt/debian/sbt-{{sbt_version}}.deb
+    dest=/tmp/sbt-{{sbt_version}}.deb
+  when: sbt_check_deb.rc == 1  
+
+- name: SBT is present
+  apt:
+    deb=/tmp/sbt-{{sbt_version}}.deb
+  when: sbt_check_deb.rc == 1  
+    

@@ -1,0 +1,5 @@
+---
+- src: https://github.com/resmo/ansible-role-bind.git
+  path: roles
+- src: https://github.com/AnsibleShipyard/ansible-scala.git
+  path: roles
