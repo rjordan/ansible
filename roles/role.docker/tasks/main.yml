@@ -4,15 +4,15 @@
 
 - name: Add Docker PPA
   apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-trusty main' update_cache=yes
-  when: ansible_distribution == 'CentOS' and ansible_distribution_version == '14.04'
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '14.04'
 
 - name: Add Docker PPA
   apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-vivid main' update_cache=yes
-  when: ansible_distribution == 'CentOS' and ansible_distribution_version == '15.04'
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '15.04'
 
 - name: Add Docker PPA
-  apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-wiley main' update_cache=yes
-  when: ansible_distribution == 'CentOS' and ansible_distribution_version == '15.10'
+  apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-wily main' update_cache=yes
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '15.10'
 
 - name: Install Docker
   apt: pkg=docker-engine state=latest 

@@ -1,0 +1,114 @@
+GIT
+  remote: https://github.com/AnsibleShipyard/ansible-scala
+  ref: master
+  sha: b159127bd79ff703549d631d49cf52910bdd0434
+  specs:
+    ansible-scala (0.0.0)
+
+GIT
+  remote: https://github.com/alourie/devbox.chrome
+  ref: master
+  sha: f773d2505280284c03aa42fa0bae568777ae233b
+  specs:
+    devbox.chrome (0.0.0)
+
+GIT
+  remote: https://github.com/resmo/ansible-role-bind
+  ref: master
+  sha: b280c3758142acb1c5662d432019d2a0df2b639d
+  specs:
+    role.bind (0.0.0)
+
+GIT
+  remote: https://github.com/rjordan/role.ansible
+  ref: master
+  sha: d356ed005e8d0b2e27e2d4090e01f53836ed1606
+  specs:
+    role.ansible (1.0.0)
+
+GIT
+  remote: https://github.com/rjordan/role.basics
+  ref: master
+  sha: 62dfa6ade6c78885558bff516a7cdab045949e61
+  specs:
+    role.basics (1.0.0)
+
+GIT
+  remote: https://github.com/rjordan/role.docker
+  ref: master
+  sha: b9673e36d935c42d25dd22648c952149296aec84
+  specs:
+    role.docker (1.0.0)
+
+GIT
+  remote: https://github.com/rjordan/role.dumpvars
+  ref: master
+  sha: 021a49441daa60086d4d28cd29fb194c4d6e634b
+  specs:
+    role.dumpvars (1.0.0)
+
+GIT
+  remote: https://github.com/rjordan/role.java-runtime
+  ref: master
+  sha: 19c3542ce70ce909566691edef8efeea2ac0171c
+  specs:
+    role.java-runtime (1.0.0)
+
+GIT
+  remote: https://github.com/rjordan/role.nfs-client
+  ref: master
+  sha: 8c5ff8ac9d1b2dfa3e94c2cbf6aa8a2d9d88f5f7
+  specs:
+    role.nfs-client (1.0.0)
+
+GIT
+  remote: https://github.com/rjordan/role.scala
+  ref: master
+  sha: 9dfbdc497c3ea557238405bb1a2fb774c27664d1
+  specs:
+    role.scala (1.0.0)
+
+GIT
+  remote: https://github.com/rjordan/role.ssh
+  ref: master
+  sha: f8ee23c27e770f5856a42c889de13aa70d6919ea
+  specs:
+    role.ssh (1.0.0)
+
+GIT
+  remote: https://github.com/rjordan/role.ubuntu-updates
+  ref: master
+  sha: be8ea0e7fe744cfbe1e9d4b1906dda762cbf7e90
+  specs:
+    role.ubuntu-updates (1.0.0)
+
+GIT
+  remote: https://github.com/rjordan/role.ufw
+  ref: master
+  sha: d1f4267c6c210949c96a5d371ee88fb06c851465
+  specs:
+    role.ufw (1.0.0)
+
+GIT
+  remote: https://github.com/weareinteractive/ansible-fail2ban
+  ref: master
+  sha: 39a968ca30c09cad347cc4a76bb2e1bf74a7d2c9
+  specs:
+    franklinkim.fail2ban (0.0.0)
+
+DEPENDENCIES
+  ansible-scala (>= 0)
+  devbox.chrome (>= 0)
+  franklinkim.fail2ban (>= 0)
+  role.ansible (>= 0)
+  role.basics (>= 0)
+  role.bind (>= 0)
+  role.docker (>= 0)
+  role.dumpvars (>= 0)
+  role.java-runtime (>= 0)
+  role.nfs-client (>= 0)
+  role.scala (>= 0)
+  role.ssh (>= 0)
+  role.ubuntu-updates (>= 0)
+  role.ufw (>= 0)
+

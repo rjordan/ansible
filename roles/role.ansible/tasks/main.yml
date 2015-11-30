@@ -9,7 +9,7 @@
   register: result
   apt: "pkg=ansible state=latest"  
  
-- fail: msg="Ansible updated please update"
+- fail: msg="Ansible updated please restart."
   when: result.changed == true
 
   

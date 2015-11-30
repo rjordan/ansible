@@ -9,8 +9,7 @@
   roles:
     - role.ubuntu-updates
     - role.ssh
-    - role.curl
-    - role.ntp
+    - role.basics
     - role.ufw
 - name: Workstations    
   hosts: 
@@ -19,7 +18,7 @@
   roles:
     - role.java-runtime    
     - role.nfs-client
-    - role.chrome
+    - devbox.chrome
 - name: Development
   hosts: 
     - dev-boxes
@@ -27,8 +26,7 @@
   roles:
     - role.ansible
     - role.docker
-    - role.git
-    - role.fail2ban
+    - franklinkim.fail2ban
     - role.scala
 - name: Docker
   hosts: 

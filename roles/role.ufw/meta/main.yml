@@ -1,0 +1,11 @@
+---
+galaxy_info:
+  author: Richard Kent Jordan
+  license: MIT
+  min_ansible_version: 1.4
+  platforms:
+    - name: Ubuntu
+  categories:
+    - monitoring
+dependencies: []
+version: 1.0.0

@@ -17,7 +17,7 @@
 
 - name: Schedule a reboot
   command: "/sbin/shutdown -r {{reboot_time}}"
-  when: file.stat.exists == true and reboot_time is defined
+  when: file.stat.exists == true and reboot_time|default("") != "" 
   ignore_errors: yes
  
 

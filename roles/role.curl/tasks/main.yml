@@ -1,4 +1,0 @@
----
-- name: Curl Playbook
-  apt: "pkg=curl state=latest"
- 

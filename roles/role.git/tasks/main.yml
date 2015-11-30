@@ -1,4 +1,0 @@
----
-- name: Git Playbook
-  apt: "pkg=git state=latest"
- 
