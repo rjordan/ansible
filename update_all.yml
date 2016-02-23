@@ -1,0 +1,7 @@
+---
+- name: Default programs 
+  hosts: all
+  become: true 
+  roles:
+    - role.ubuntu-updates
+
