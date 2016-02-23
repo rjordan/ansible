@@ -3,4 +3,8 @@ ufw_allow_ports:
   - 22
   - 389
   - 53  
+  - 8300 # CONSUL
+  - 8301 # CONSUL
+  - 8302 # CONSUL
+  
 reboot_time: 04:00

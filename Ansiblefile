@@ -3,6 +3,10 @@ site "https://galaxy.ansible.com/api/v1"
 
 role "devbox.chrome"
 role "franklinkim.fail2ban"
+role "franklinkim.nginx"
+role "savagegus.consul"
+role "geerlingguy.nginx"
+role "joshualund.golang"
 role "ansible-scala", github: "AnsibleShipyard/ansible-scala"
 
 role "role.dumpvars", github: "rjordan/role.dumpvars"
@@ -16,5 +20,5 @@ role "role.basics", github: "rjordan/role.basics"
 role "role.docker", github: "rjordan/role.docker"
 role "role.ufw", github: "rjordan/role.ufw"
 role "role.java-runtime", github: "rjordan/role.java-runtime"
-
+role "role.consul", github: "rjordan/role.consul"
 

@@ -1,4 +1,6 @@
 ---
+#  vars_files: 
+#    - secure/gitlab.yml
   gitlab_host: gitlab.codecrusade.org
   gitlab_ssh_port: 1022
   gitlab_web_port: 80

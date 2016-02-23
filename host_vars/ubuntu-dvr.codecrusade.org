@@ -1,10 +1,16 @@
 ---
 ufw_allow_ports: 
-- 22    #SSH
-- 2049  #NFS
-- 5432  #Postges 
-- 143   #IMAP
-- 25    #SMTP
-- 80    #HTTP
-- 443   #HTTPS
-- 6379  #REDIS
+  - 22    #SSH
+  - 2049  #NFS
+  - 5432  #Postges 
+  - 143   #IMAP
+  - 25    #SMTP
+  - 80    #HTTP
+  - 443   #HTTPS
+  - 6379  #REDIS
+firewall_enabled: false  
+fail2ban_jail:
+  default:
+    ignoreip: 127.0.0.1/8 192.168.0.0/16
+  sshd:
+    enabled: true

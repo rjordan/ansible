@@ -1,0 +1,48 @@
+---
+- name: Logstash Forward
+  hosts: all
+  sudo: true
+  tasks: 
+    - copy: src=files/01-logstash.conf dest=/etc/rsyslog.d/01-logstash.conf 
+      register: ls_config
+    - service: name=rsyslog state=restarted
+      when: ls_config.changed
+- name: Default programs 
+  hosts: docker
+  sudo: true
+  tasks:
+    - apt: pkg=apt-transport-https state=installed force=yes
+    - apt: pkg=nano state=installed
+    - apt: pkg="linux-image-extra-{{ansible_kernel}}" state=installed 
+  roles:
+    - role.ubuntu-updates
+    - role.ssh
+    - role.basics
+    - role.ufw
+- name: Docker
+  hosts: 
+    - docker
+  sudo: true 
+  vars:
+    consul_datacenter: home 
+  roles:
+    - role.docker
+    - role.nfs-client
+    - role.consul
+  tasks:
+    - mount: name=/srv/docker-data src=nfs.codecrusade.org:/srv/docker-data fstype=nfs4 opts=noatime state=mounted
+- name: Containers
+  hosts:
+    - docker
+  tasks:  
+    - name: registrator
+      docker:
+        name: registrator
+        image: gliderlabs/registrator
+        pull: always
+        state: reloaded
+        net: host
+        command: "consul://{{ansible_default_ipv4.address}}:8500 '-ip {{ansible_default_ipv4.address}}' '-resync 300'"
+        volumes:
+        - "/var/run/docker.sock:/tmp/docker.sock:ro"
+    

@@ -1,29 +1,18 @@
-#[local]
-#127.0.0.1 ansible_connection=local
-
 # BOXEN
-[megatraveler]
 megatraveler.codecrusade.org
-
-[lcars]
 lcars.codecrusade.org
-
-[ubuntu-dvr]
 ubuntu-dvr.codecrusade.org
-
-[web1]
 web1.codecrusade.org
+deepspace9.codecrusade.org
+docker2.codecrusade.org
 
-# [deepspace9]
-# deepspace9.codecrusade.org
-
-[docker1]
-docker.codecrusade.org
+#[gateway]
+#192.168.0.1
 
 # GROUPS
 [docker]
-docker.codecrusade.org
-ubuntu-dvr.codecrusade.org
+docker2.codecrusade.org
+# ubuntu-dvr.codecrusade.org
 
 [workstations]
 megatraveler.codecrusade.org

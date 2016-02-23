@@ -13,6 +13,27 @@ GIT
     devbox.chrome (0.0.0)
 
 GIT
+  remote: https://github.com/geerlingguy/ansible-role-nginx
+  ref: master
+  sha: e9aa607bb6ccfdd6634b218ca1e95037d86cb0c2
+  specs:
+    geerlingguy.nginx (0.0.0)
+
+GIT
+  remote: https://github.com/jivesoftware/ansible-consul
+  ref: master
+  sha: 3639fec14efacf8087ed48f8fe7ae2338c29f564
+  specs:
+    savagegus.consul (0.0.0)
+
+GIT
+  remote: https://github.com/jlund/ansible-go
+  ref: master
+  sha: f07932b2fa5a787ae4194a77606e1c08e0b63878
+  specs:
+    joshualund.golang (0.0.0)
+
+GIT
   remote: https://github.com/resmo/ansible-role-bind
   ref: master
   sha: b280c3758142acb1c5662d432019d2a0df2b639d
@@ -32,6 +53,13 @@ GIT
   sha: 62dfa6ade6c78885558bff516a7cdab045949e61
   specs:
     role.basics (1.0.0)
+
+GIT
+  remote: https://github.com/rjordan/role.consul
+  ref: master
+  sha: 533b374bb279b7f3aa91f492ef588adece1f9e14
+  specs:
+    role.consul (1.0.0)
 
 GIT
   remote: https://github.com/rjordan/role.docker
@@ -96,13 +124,24 @@ GIT
   specs:
     franklinkim.fail2ban (0.0.0)
 
+GIT
+  remote: https://github.com/weareinteractive/ansible-nginx
+  ref: master
+  sha: 830eabb9b348800651fb8a2d525e64118519ae20
+  specs:
+    franklinkim.nginx (0.0.0)
+
 DEPENDENCIES
   ansible-scala (>= 0)
   devbox.chrome (>= 0)
   franklinkim.fail2ban (>= 0)
+  franklinkim.nginx (>= 0)
+  geerlingguy.nginx (>= 0)
+  joshualund.golang (>= 0)
   role.ansible (>= 0)
   role.basics (>= 0)
   role.bind (>= 0)
+  role.consul (>= 0)
   role.docker (>= 0)
   role.dumpvars (>= 0)
   role.java-runtime (>= 0)
@@ -111,4 +150,5 @@ DEPENDENCIES
   role.ssh (>= 0)
   role.ubuntu-updates (>= 0)
   role.ufw (>= 0)
+  savagegus.consul (>= 0)
 

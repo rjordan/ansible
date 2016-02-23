@@ -1,22 +1,12 @@
 ---
 - name: Containers Playbook 
-  hosts: ubuntu-dvr
+  hosts: ubuntu-dvr.codecrusade.org
   vars_files:
   - group_vars/smtp.yml
   - group_vars/secure/smtp.yml
   - group_vars/gitlab.yml
   - group_vars/secure/gitlab.yml
   tasks:
-    - name: registrator
-      docker:
-        name: registrator
-        image: gliderlabs/registrator
-        pull: always
-        state: started
-        net: host
-        command: 'consul://192.168.0.100:8500 "-ip 192.168.0.100"'
-        volumes:
-        - "/var/run/docker.sock:/tmp/docker.sock"
     - name: redis
       docker:
         name: redis
@@ -25,16 +15,6 @@
         state: started
         ports:
         - "6379:6379"
-    - name: registry-ui
-      docker:
-        name: registry-ui
-        image: atcol/docker-registry-ui
-        pull: always
-        state: started
-        ports:
-        - "7080:8080"
-        env:
-          REG1: http://registry.codecrusade.org/v1/
     - name: mongodb
       docker:
         name: mongodb
@@ -60,6 +40,19 @@
         volumes:
         - "/srv/docker-data/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg"
         - "/srv/docker-data/haproxy/certs.d:/usr/local/etc/haproxy/certs.d"
+    - name: Plex
+      docker:
+        name: plex
+        image: timhaak/plex
+        pull: always
+        state: started
+        net: host
+        ports:
+        - "32400:32400"
+        volumes:
+        - "/srv/docker-data/plex/config:/config"
+        - "/srv/docker-data/plex/data:/data"
+        - "/srv/media/shared/Video:/data/Video"
     - name: gitlab
       docker:
         name: gitlab
@@ -88,103 +81,16 @@
         ports:
         - "1022:22"
         - "1080:80"
-- name: Containers Playbook 
-  hosts: docker1
-  tasks:
-#    - name: registry
-#      docker:
-#        name: registry
-#        image: registry
-#        pull: always
-#        state: started
-#        env:
-#          STORAGE_PATH: /registry
-#        ports:
-#        - "80:5000"
-#        volumes:
-#        - "/srv/docker-data/docker-index:/registry"  
-#    - name: filepile
-#      docker:
-#        name: filepile
-#        image: docker.codecrusade.org/filepile
-#        pull: always
-#        state: stopped
-#        registry: docker.codecrusade.org
-#        insecure_registry: yes
-#        ports:
-#        - "3001:3000"
-#    - name: geopoke
-#      docker:
-#        name: geopoke
-#        image: docker.codecrusade.org/geopoke
-#        pull: always
-#        state: stopped
-#        registry: docker.codecrusade.org
-#        insecure_registry: yes
-#        ports:
-#        - "3000:3000"
-    - name: mumble
+    - name: registrator
       docker:
-        name: mumble
-        image: dcshock/docker-mumble-server
+        name: registrator
+        image: gliderlabs/registrator
         pull: always
-        state: started
-        ports:
-        - "2222:22"
-        - "64738:64738/udp"
-        - "64738:64738/tcp"
-    - name: elasticsearch
-      docker:
-        name: elasticsearch
-        image: docker.codecrusade.org/elasticsearch
-        # pull: always
-        state: started
-        registry: docker.codecrusade.org
-        insecure_registry: yes
+        state: reloaded
+        net: host
+        command: "consul://{{ansible_default_ipv4.address}}:8500 '-ip {{ansible_default_ipv4.address}}' '-resync 300'"
         volumes:
-        - "/srv/docker-data/elasticsearch:/elasticsearch-1.4.0/data/elasticsearch"
-        ports:
-        - "9200:9200"
-        - "9300:9300/tcp"
-        - "9300:9300/udp"
-        - "9400:9400"
-    - name: logstash
-      docker:
-        name: logstash
-        image: docker.codecrusade.org/logstash:1.4.2
-        state: started
-        registry: docker.codecrusade.org
-        insecure_registry: yes
-        links:
-        - "elasticsearch:es"
-        ports:
-        - "5000:5000"
-        - "5228:5228/udp"
-        - "5544:5544"
-    - name: minecraft1
-      docker:
-        name: minecraft1
-        image: docker.codecrusade.org/bukkit
-        # pull: always
-        state: started
-        registry: docker.codecrusade.org
-        insecure_registry: yes
-        volumes:
-        - "/srv/docker-data/minecraft/world1:/minecraft"
-        ports:
-        - "25565:25565"
-        - "8123:8123"
-    - name: minecraft2
-      docker:
-        name: minecraft2
-        image: docker.codecrusade.org/bukkit
-        # pull: always
-        state: stopped
-        registry: docker.codecrusade.org
-        insecure_registry: yes
-        volumes:
-        - "/srv/docker-data/minecraft/world2:/minecraft"
-        ports:
-        - "25566:25565"
-        - "8124:8123"
+        - "/var/run/docker.sock:/tmp/docker.sock:ro"
+
+
 

@@ -2,5 +2,9 @@
 ufw_allow_ports: 
   - 22
   - 3000
-
+fail2ban_jail:
+  default:
+    ignoreip: 127.0.0.1/8 192.168.0.0/16
+  sshd:
+    enabled: true
 
