@@ -1,4 +1,5 @@
 #!/bin/bash
+ansible-galaxy install -r requirements.yml -p roles/
 #ansible-playbook update_all.yml -K -i hosts
 ansible-playbook codecrusade.yml -K -i hosts
 ansible-playbook docker.yml -K -i hosts 

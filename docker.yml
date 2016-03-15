@@ -15,10 +15,10 @@
     - apt: pkg=nano state=installed
     - apt: pkg="linux-image-extra-{{ansible_kernel}}" state=installed 
   roles:
-    - role.ubuntu-updates
-    - role.ssh
-    - role.basics
-    - role.ufw
+    - rjordan.ubuntu-updates
+    - rjordan.ssh
+    - rjordan.basics
+    - rjordan.ufw
 - name: Docker
   hosts: 
     - docker
@@ -26,9 +26,9 @@
   vars:
     consul_datacenter: home 
   roles:
-    - role.docker
-    - role.nfs-client
-    - role.consul
+    - rjordan.docker
+    - rjordan.nfs-client
+    - rjordan.consul
   tasks:
     - mount: name=/srv/docker-data src=nfs.codecrusade.org:/srv/docker-data fstype=nfs4 opts=noatime state=mounted
 - name: Containers

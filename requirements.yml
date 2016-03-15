@@ -1,0 +1,21 @@
+---
+- rjordan.dumpvars,1.0.0
+- rjordan.ubuntu-updates
+- franklinkim.fail2ban
+- cmprescott.chrome
+# devbox.chrome
+- franklinkim.nginx
+- savagegus.consul
+- geerlingguy.nginx
+- joshualund.golang
+- rjordan.ansible
+- rjordan.docker
+- rjordan.nfs-client
+- rjordan.consul
+- rjordan.ssh
+- rjordan.java-runtime
+- rjordan.ufw
+- rjordan.scala
+- rjordan.basics
+# rjordan.bind
+

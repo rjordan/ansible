@@ -7,18 +7,18 @@
 #      action: template src=templates/dumpall.j2 dest=/tmp/ansible.all
 #      changed_when: false
   roles:
-#    - role.ubuntu-updates
-    - role.ssh
-    - role.basics
-    - role.ufw
+#    - rjordan.ubuntu-updates
+    - rjordan.ssh
+    - rjordan.basics
+    - rjordan.ufw
 - name: Workstations    
   hosts: 
     - workstations
   become: true 
   roles:
-    - role.java-runtime    
-    - role.nfs-client
-    - devbox.chrome
+    - rjordan.java-runtime    
+    - rjordan.nfs-client
+    - cmprescott.chrome
 - name: Fail2Ban
   hosts: 
     - ubuntu-dvr.codecrusade.org
@@ -30,17 +30,17 @@
     - dev-boxes
   become: true 
   roles:
-    - role.ansible
-    - role.docker
+    - rjordan.ansible
+    - rjordan.docker
     - franklinkim.fail2ban
-    - role.scala
+    - rjordan.scala
 - name: Docker
   hosts: 
     - docker2.codecrusade.org
   become: true 
   roles:
-    - role.docker
-    - role.nfs-client
+    - rjordan.docker
+    - rjordan.nfs-client
 #  tasks:
 #    - mount: name=/srv/docker-data src=nfs.codecrusade.org:/srv/docker-data fstype=nfs4 opts=noatime state=mounted
 - name: Docker
@@ -51,5 +51,5 @@
   vars:
     consul_datacenter: home 
   roles:
-    - role.consul
+    - rjordan.consul
 

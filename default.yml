@@ -3,24 +3,24 @@
   hosts: all
   sudo: true
   roles:
-    - role.ubuntu-updates
-    - role.ssh
-    - role.curl
-    - role.ntp
+    - rjordan.ubuntu-updates
+    - rjordan.ssh
+    - rjordan.curl
+    - rjordan.ntp
 - name: Development
   hosts: 
     - dev-boxs
   sudo: true
   roles:
-    - role.ufw #TODO Move up with more config
-    - role.ansible
-    - role.docker
-    - role.git
-    - role.java-runtime    
+    - rjordan.ufw #TODO Move up with more config
+    - rjordan.ansible
+    - rjordan.docker
+    - rjordan.git
+    - rjordan.java-runtime    
 - name: Docker
   hosts: 
     - docker
   sudo: true  
   roles:
-    - role.docker
+    - rjordan.docker
 
