@@ -1,4 +1,0 @@
----
-ufw_allow_ports:
-  - 22
-firewall_enabled: true
