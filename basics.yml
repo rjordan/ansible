@@ -1,0 +1,21 @@
+---
+- name: Ensure the basics are insalled.
+  hosts: 
+    - dc-stl
+#    - dc-gsc
+  become: true 
+  roles:
+    - rjordan.ubuntu-updates
+    - rjordan.ssh
+  tasks:
+    - name: Basic Packages
+      apt: "pkg={{item}} state=latest"
+      with_items:
+      - curl
+      - ntp
+      - apt-transport-https
+      - nano
+      - "linux-image-extra-{{ansible_kernel}}"
+
+
+

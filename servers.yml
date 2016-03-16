@@ -1,0 +1,25 @@
+---
+- name: Docker
+  hosts: docker
+  become: true 
+  roles:
+    - rjordan.docker
+    - rjordan.nfs-client
+#  tasks:
+#    - mount: name=/srv/docker-data src=nfs.codecrusade.org:/srv/docker-data fstype=nfs4 opts=noatime state=mounted
+
+#- name: Consul
+#  hosts: dc-stl
+#  become: true 
+#  vars:
+#    consul_datacenter: home 
+#  roles:
+#    - rjordan.consul
+    
+- name: Fail2Ban
+  hosts: 
+    - ubuntu-dvr.codecrusade.org
+  become: true 
+  roles:
+    - franklinkim.fail2ban      
+

@@ -2,31 +2,14 @@
 - name: Default programs
   hosts: all
   sudo: true
-#  gather_facts: false
-#  vars_files:
-#  - group_vars/gitlab.yml
-#  - group_vars/secure/gitlab.yml  
   vars:
     test_value: "{{ lookup('consul_kv', 'gamemaster/production/DB_USER') }}"
-#   - include: group_vars/smtp.yml
-#    ansible_ssh_user: root
-#    ansible_ssh_port: 522
 #    consul_datacenter: home 
 #    consul_server: true
   tasks:
     - debug: msg="{{test_value}}"
-#    - debug: var=smtp_port
-#    - debug: var=smtp_password
- 
-#    - name: Get IPtables
-#      raw: iptables -S FORWARD
-#      register: iptablerules
-#      iptables: chain=FORWARD protocol=tcp source=anywhere source_port=8080 destination=192.168.0.60 destination_port=8080 
-#    - debug: var=iptablerules
   roles:
 #  - role.consul
-#  - role.basics
-#  - role.docker
 #  - role: role.bind
 #    bind_config_recursion: "yes"
 #    bind_config_master_zones:

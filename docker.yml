@@ -7,30 +7,7 @@
       register: ls_config
     - service: name=rsyslog state=restarted
       when: ls_config.changed
-- name: Default programs 
-  hosts: docker
-  sudo: true
-  tasks:
-    - apt: pkg=apt-transport-https state=installed force=yes
-    - apt: pkg=nano state=installed
-    - apt: pkg="linux-image-extra-{{ansible_kernel}}" state=installed 
-  roles:
-    - rjordan.ubuntu-updates
-    - rjordan.ssh
-    - rjordan.basics
-    - rjordan.ufw
-- name: Docker
-  hosts: 
-    - docker
-  sudo: true 
-  vars:
-    consul_datacenter: home 
-  roles:
-    - rjordan.docker
-    - rjordan.nfs-client
-    - rjordan.consul
-  tasks:
-    - mount: name=/srv/docker-data src=nfs.codecrusade.org:/srv/docker-data fstype=nfs4 opts=noatime state=mounted
+      
 - name: Containers
   hosts:
     - docker

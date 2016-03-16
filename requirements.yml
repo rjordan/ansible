@@ -1,9 +1,8 @@
 ---
-- rjordan.dumpvars,1.0.0
+- rjordan.dumpvars
 - rjordan.ubuntu-updates
 - franklinkim.fail2ban
 - cmprescott.chrome
-# devbox.chrome
 - franklinkim.nginx
 - savagegus.consul
 - geerlingguy.nginx
@@ -16,6 +15,7 @@
 - rjordan.java-runtime
 - rjordan.ufw
 - rjordan.scala
-- rjordan.basics
+# devbox.chrome
+# rjordan.basics
 # rjordan.bind
 

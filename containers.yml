@@ -92,5 +92,99 @@
         volumes:
         - "/var/run/docker.sock:/tmp/docker.sock:ro"
 
-
+- name: Containers Playbook 
+  hosts: docker2.codecrusade.org
+  tasks:
+    - name: registrator
+      docker:
+        name: registrator
+        image: gliderlabs/registrator
+        state: started
+        net: host
+        command: "consul://{{ansible_default_ipv4.address}}:8500 '-ip {{ansible_default_ipv4.address}}' '-resync 300'"
+        volumes:
+        - "/var/run/docker.sock:/tmp/docker.sock:ro"
+    - name: registry
+      docker:
+        name: registry
+        image: registry:2
+        state: started
+        restart_policy: always
+#        env:
+#          - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt \
+#          - REGISTRY_HTTP_TLS_KEY=/certs/domain.key 
+        ports:
+        - "5000:5000"
+        volumes:
+        - "/srv/docker-data/registry/data:/var/lib/registry"  
+        - "/srv/docker-data/registry/certs:/certs"
+    - name: minecraft1
+      docker:
+        name: minecraft1
+        image: docker2.codecrusade.org:5000/bukkit
+        state: started
+        insecure_registry: yes
+        env:
+          SERVICE_TAGS: kids
+        volumes:
+        - "/srv/docker-data/minecraft/world1:/minecraft"
+        ports:
+        - "25565:25565"
+        - "8123:8123"
+    - name: minecraft2
+      docker:
+        name: minecraft2
+        image: docker2.codecrusade.org:5000/bukkit
+        state: stopped
+        insecure_registry: yes
+        env:
+          SERVICE_TAGS: adults
+        volumes:
+        - "/srv/docker-data/minecraft/world2:/minecraft"
+        ports:
+        - "25566:25565"
+        - "8124:8123"
+    - name: elasticsearch
+      docker:
+        name: elasticsearch
+        image: elasticsearch:2.1.1
+        state: started
+        volumes:
+        - "/srv/docker-data/elasticsearch/config:/usr/share/elasticsearch/config"
+        - "/srv/docker-data/elasticsearch/data:/usr/share/elasticsearch/data"
+        - "/srv/docker-data/elasticsearch/plugins:/usr/share/elasticsearch/plugins"
+        ports:
+        - "9200:9200"
+        - "9300:9300"
+    - name: mumble
+      docker:
+        name: mumble
+        image: dcshock/docker-mumble-server
+        state: started
+        ports:
+        - "64738:64738/udp"
+        - "64738:64738/tcp"  
+    - name: kibana
+      docker:
+        name: kibana
+        image: kibana
+        state: started
+        links:
+        - "elasticsearch:elasticsearch"
+        ports:
+        - "5601:5601"     
+    - name: logstash
+      docker:
+        name: logstash
+        image: logstash:2.1.1
+        state: started
+        command: logstash -f /config-dir/logstash.conf
+        volumes:
+        - "/srv/docker-data/logstash:/config-dir"
+        links:
+        - "elasticsearch:es"
+        ports:
+        - "5001:5001"
+        - "5544:5544"
+        - "5228:5228/udp"
 

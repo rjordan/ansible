@@ -2,7 +2,6 @@
 megatraveler.codecrusade.org
 lcars.codecrusade.org
 ubuntu-dvr.codecrusade.org
-web1.codecrusade.org
 deepspace9.codecrusade.org
 docker2.codecrusade.org
 
@@ -10,9 +9,18 @@ docker2.codecrusade.org
 #192.168.0.1
 
 # GROUPS
+[dc-stl]
+megatraveler.codecrusade.org
+lcars.codecrusade.org
+ubuntu-dvr.codecrusade.org
+docker2.codecrusade.org
+
+[dc-gsc]
+deepspace9.codecrusade.org
+
 [docker]
 docker2.codecrusade.org
-# ubuntu-dvr.codecrusade.org
+ubuntu-dvr.codecrusade.org
 
 [workstations]
 megatraveler.codecrusade.org

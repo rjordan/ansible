@@ -1,55 +1,7 @@
 ---
-- name: Default programs 
-  hosts: all
-  become: true 
-#  tasks:
-#    - name: Dump vars
-#      action: template src=templates/dumpall.j2 dest=/tmp/ansible.all
-#      changed_when: false
-  roles:
-#    - rjordan.ubuntu-updates
-    - rjordan.ssh
-    - rjordan.basics
-    - rjordan.ufw
-- name: Workstations    
-  hosts: 
-    - workstations
-  become: true 
-  roles:
-    - rjordan.java-runtime    
-    - rjordan.nfs-client
-    - cmprescott.chrome
-- name: Fail2Ban
-  hosts: 
-    - ubuntu-dvr.codecrusade.org
-  become: true 
-  roles:
-    - franklinkim.fail2ban    
-- name: Development
-  hosts: 
-    - dev-boxes
-  become: true 
-  roles:
-    - rjordan.ansible
-    - rjordan.docker
-    - franklinkim.fail2ban
-    - rjordan.scala
-- name: Docker
-  hosts: 
-    - docker2.codecrusade.org
-  become: true 
-  roles:
-    - rjordan.docker
-    - rjordan.nfs-client
-#  tasks:
-#    - mount: name=/srv/docker-data src=nfs.codecrusade.org:/srv/docker-data fstype=nfs4 opts=noatime state=mounted
-- name: Docker
-  hosts: 
-    - web1.codecrusade.org
-    - docker2.codecrusade.org
-  become: true 
-  vars:
-    consul_datacenter: home 
-  roles:
-    - rjordan.consul
+- include: basics.yml
+- include: servers.yml    
+- include: workstations.yml  
+- include: development.yml 
+- include: containers.yml
 
