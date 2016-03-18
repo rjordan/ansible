@@ -1,20 +1,24 @@
 ---
-- rjordan.dumpvars
-- rjordan.ubuntu-updates
-- franklinkim.fail2ban
-- cmprescott.chrome
-- franklinkim.nginx
-- savagegus.consul
-- geerlingguy.nginx
-- joshualund.golang
-- rjordan.ansible
-- rjordan.docker
-- rjordan.nfs-client
-- rjordan.consul
-- rjordan.ssh
-- rjordan.java-runtime
-- rjordan.ufw
-- rjordan.scala
+ - src: rjordan.dumpvars
+ - src: rjordan.ubuntu-updates
+ - src: franklinkim.fail2ban
+ - src: cmprescott.chrome
+ - src: franklinkim.nginx
+ - src: savagegus.consul
+ - src: geerlingguy.nginx
+ - src: joshualund.golang
+ - src: rjordan.ansible
+ - src: rjordan.docker
+ - src: rjordan.nfs-client
+ - src: rjordan.consul
+ - src: rjordan.ssh
+ - src: rjordan.java-runtime
+ - src: rjordan.ufw
+ - src: rjordan.scala
+ - src: https://github.com/rjordan/role.devtools
+   version: master
+   name: rjordan.devtools
+
 # devbox.chrome
 # rjordan.basics
 # rjordan.bind

@@ -1,16 +1,26 @@
 ---
 - name: Development
   hosts: dev-boxes
-  become: true 
+  become: true
   tasks:
     - name: Basic Packages
       apt: "pkg={{item}} state=latest"
       with_items:
       - git
+      - jq
+      - phantomjs
+      - checkstyle
+      - tmux
+      - vim
+      - nano
   roles:
     - rjordan.ansible
     - rjordan.docker
     - rjordan.java-runtime  
     - rjordan.scala
- 
+    
+- name: Development User Settings
+  hosts: dev-boxes
+  roles:
+    - rjordan.devtools
 
