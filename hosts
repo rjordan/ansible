@@ -1,17 +1,14 @@
 # BOXEN
-megatraveler.codecrusade.org
+#megatraveler.codecrusade.org
 lcars.codecrusade.org
 ubuntu-dvr.codecrusade.org
 deepspace9.codecrusade.org
 docker2.codecrusade.org
 
-#[gateway]
-#192.168.0.1
-
 # GROUPS
 [dc-stl]
-megatraveler.codecrusade.org
-lcars.codecrusade.org
+#megatraveler.codecrusade.org
+#lcars.codecrusade.org
 ubuntu-dvr.codecrusade.org
 docker2.codecrusade.org
 
