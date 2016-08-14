@@ -1,14 +1,21 @@
 ---
 - name: Default programs
-  hosts: all
-  sudo: true
+  hosts: docker
+  # remote_user: ubuntu
+  become: true
   vars:
-    test_value: "{{ lookup('consul_kv', 'gamemaster/production/DB_USER') }}"
-#    consul_datacenter: home 
-#    consul_server: true
+    docker:
+      test2:
+    ldap_auth_uri: ldap://192.168.0.200/
+    ldap_auth_base_dc: DC=codecrusade,DC=org
+    ldap_auth_root_bind_dn: CN=admin,DC=codecrusade,DC=org
+  #    consul_datacenter: home
+  #    consul_server: true
   tasks:
-    - debug: msg="{{test_value}}"
+    - name: debug
+      debug: msg="{{docker}}"
   roles:
+#    - role: rjordan.ldap-auth-client
 #  - role.consul
 #  - role: role.bind
 #    bind_config_recursion: "yes"
@@ -25,4 +32,3 @@
 #    bind_config_master_forwarders:
 #      - "8.8.8.8"
 #      - "8.8.4.4"
-

@@ -1,21 +1,33 @@
 ---
-- name: Ensure the basics are insalled.
-  hosts: 
-    - dc-stl
-#    - dc-gsc
-  become: true 
-  roles:
-    - rjordan.ubuntu-updates
-    - rjordan.ssh
-  tasks:
-    - name: Basic Packages
-      apt: "pkg={{item}} state=latest"
-      with_items:
-      - curl
-      - ntp
-      - apt-transport-https
-      - nano
-      - "linux-image-extra-{{ansible_kernel}}"
-
-
-
+  - name: Ensure the basics are insalled.
+    hosts: all
+    become: true
+    vars_files:
+      - users.yml
+    roles:
+      - rjordan.ubuntu-updates
+      - rjordan.ssh
+    tasks:
+      - group:
+          name: "{{item.name}}"
+          gid: "{{item.gid}}"
+        with_items: "{{domain_users}}"
+      - user:
+          name: "{{item.name}}"
+          uid: "{{item.uid}}"
+          group: "{{item.name}}"
+          groups: "{{item.groups}}"
+          shell: /bin/bash
+          password: "{{item.password}}"
+        with_items: "{{domain_users}}"
+      - name: Basic Packages
+        apt:
+          pkg: "{{item}}"
+          state: latest
+        with_items:
+          - dkms
+          - curl
+          - ntp
+          - apt-transport-https
+          - nano
+          - "linux-image-extra-{{ansible_kernel}}"

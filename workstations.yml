@@ -1,11 +1,9 @@
 ---
-- name: Workstations    
-  hosts: workstations
-  become: true 
-  roles:
-    - rjordan.java-runtime    
-    - rjordan.nfs-client
-    - rjordan.ufw
-#    - cmprescott.chrome
- 
-
+  - name: Workstations
+    hosts: workstations
+    become: true
+    roles:
+      - rjordan.java-runtime
+      - rjordan.nfs-client
+  #    - rjordan.ufw
+  #    - cmprescott.chrome

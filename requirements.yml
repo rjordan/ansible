@@ -1,5 +1,4 @@
 ---
- - src: rjordan.dumpvars
  - src: rjordan.ubuntu-updates
  - src: franklinkim.fail2ban
  - src: cmprescott.chrome
@@ -14,7 +13,6 @@
  - src: rjordan.ssh
  - src: rjordan.java-runtime
  - src: rjordan.ufw
- - src: rjordan.scala
  - src: https://github.com/rjordan/role.devtools
    version: master
    name: rjordan.devtools
@@ -22,4 +20,3 @@
 # devbox.chrome
 # rjordan.basics
 # rjordan.bind
-

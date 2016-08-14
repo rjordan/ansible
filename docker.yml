@@ -1,17 +1,10 @@
 ---
-- name: Logstash Forward
-  hosts: all
-  sudo: true
-  tasks: 
-    - copy: src=files/01-logstash.conf dest=/etc/rsyslog.d/01-logstash.conf 
-      register: ls_config
-    - service: name=rsyslog state=restarted
-      when: ls_config.changed
-      
+# Replace rsyslog with filebeat
+
 - name: Containers
   hosts:
     - docker
-  tasks:  
+  tasks:
     - name: registrator
       docker:
         name: registrator
@@ -22,4 +15,3 @@
         command: "consul://{{ansible_default_ipv4.address}}:8500 '-ip {{ansible_default_ipv4.address}}' '-resync 300'"
         volumes:
         - "/var/run/docker.sock:/tmp/docker.sock:ro"
-    

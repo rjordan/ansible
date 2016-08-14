@@ -1,7 +1,0 @@
----
-- name: Default programs 
-  hosts: all
-  become: true 
-  roles:
-    - rjordan.ubuntu-updates
-
