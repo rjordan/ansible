@@ -1,9 +1,6 @@
 ---
-- name: Default programs 
-  hosts: all
-  become: true 
-  tasks:
-    - name: Dump vars
-      action: template src=templates/dumpall.j2 dest=/tmp/ansible.all
-      changed_when: false
-
+  - name: Default programs
+    hosts: all
+    become: true
+    tasks:
+      - debug: msg="{{hostvars[inventory_hostname]}}"
