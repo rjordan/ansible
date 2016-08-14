@@ -2,27 +2,29 @@
   - name: Create users
     hosts: all
     become: true
+    vars_files:
+      - ans_user.yml
     tasks:
       - group:
-          name: alexandria
+          name: "{{ansible_username}}"
           gid: 777
-      - user: 
-          name: alexandria
-          comment: "Alexandria" 
+      - user:
+          name: "{{ansible_username}}"
+          comment: "Ansible User"
           uid: 777
-          group: alexandria
+          group: "{{ansible_username}}"
           groups: adm,sudo
-      - name: Fix borked permissions
-        file: 
-          path: /home/alexandria 
-          state: directory 
-          owner: alexandria
-          group: alexandria
+          shell: /bin/bash
+          password: "*"
+      - file:
+          path: "/home/{{ansible_username}}"
+          state: directory
+          owner: "{{ansible_username}}"
+          group: "{{ansible_username}}"
           recurse: yes
       - copy:
           dest: /etc/sudoers.d/ansible
-          content: "alexandria ALL=(ALL) NOPASSWD:ALL"
+          content: "{{ansible_username}} ALL=(ALL) NOPASSWD:ALL"
       - authorized_key:
-          user: alexandria
+          user: "{{ansible_username}}"
           key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDU8zHb8781pPGzAZKU6JhTjOd/HO8AcovTaft02uBDtamEzYXCTrI8X11Y3k5pVoIB4Dp8N2NLmQqlCuVYWUl8w29SsqN6VPbwBJvypee2IOp0gnlMI9yt43XTogI693KA7y9TNjNVoHQ+4x+itq3AksqVaUGhsuC1zUTN0gGDRPdS7WGuKlrIsKi7DYEMh2PiIKVSmn4DtLtduSdPAGAdbHsilUxzOACVhUsWiX00Bvn3LQQS10zfGp9zAmbBxKvertKR60K1YtIMc3y7XJPELlPCpRUh+PX0fP4u14WJ3sZvgsn2MWFQTAMYCLdlZduXA6Fp3w5JtLXiAI7N2hMqgafVCuj/lejzJdlKPQ+tivhLZVfuvEwX0ukGgyuoXkiiUACXH/9LFgx0fgDEeW5VwhNDezH35G+K+mnMoS+cuqWQGtnUBYsU9lMjelj3Mjqkqea6w24uP7Q+ZImLGNzORmbHRM5FuhmVTRaWGfJkYooAYaEOHJq2I/f+6QQh4xzX1bmJyKTUHAHSRjaWBh5AMJ07m0saqLdeu8fVsk0wgZtEQUidGDKybnYQzmzIVru/JteLYBY1EqFyKvTNNN2ocnFKOXH7kJ1B3oD9kRkaDTFrGd7CmUbsTGXYUBX/2mTOfRnGgE9hTfHyWZjOLBCrwSxLzn5dLnsNU9km7eojTw=="
-          
