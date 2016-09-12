@@ -1,10 +1,12 @@
 ---
   - name: Create users
-    hosts: all
+    hosts: docker.codecrusade.org,lcars2.codecrusade.org  #all
+    gather_facts: false
     become: true
     vars_files:
       - ans_user.yml
     tasks:
+      - raw: sudo apt-get -y install python-simplejson
       - group:
           name: "{{ansible_username}}"
           gid: 777
@@ -16,12 +18,12 @@
           groups: adm,sudo
           shell: /bin/bash
           password: "*"
-      - file:
-          path: "/home/{{ansible_username}}"
-          state: directory
-          owner: "{{ansible_username}}"
-          group: "{{ansible_username}}"
-          recurse: yes
+#      - file:
+#          path: "/home/{{ansible_username}}"
+#          state: directory
+#          owner: "{{ansible_username}}"
+#          group: "{{ansible_username}}"
+#          recurse: yes
       - copy:
           dest: /etc/sudoers.d/ansible
           content: "{{ansible_username}} ALL=(ALL) NOPASSWD:ALL"

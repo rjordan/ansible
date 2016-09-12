@@ -1,6 +1,6 @@
 ---
   - name: Development
-    hosts: dev-boxes
+    hosts: dev_boxes
     become: true
     tasks:
       - name: Basic Packages

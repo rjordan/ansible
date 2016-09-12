@@ -93,7 +93,7 @@
             - "/var/run/docker.sock:/tmp/docker.sock:ro"
 
   - name: Containers Playbook
-    hosts: docker2.codecrusade.org
+    hosts: docker.codecrusade.org
     tasks:
       - name: registrator
         docker:
@@ -121,7 +121,7 @@
       - name: minecraft1
         docker:
           name: minecraft1
-          image: docker2.codecrusade.org:5000/bukkit
+          image: docker.codecrusade.org:5000/bukkit
           state: started
           insecure_registry: yes
           env:
@@ -134,7 +134,7 @@
       - name: minecraft2
         docker:
           name: minecraft2
-          image: docker2.codecrusade.org:5000/bukkit
+          image: docker.codecrusade.org:5000/bukkit
           state: stopped
           insecure_registry: yes
           env:
@@ -160,7 +160,7 @@
       - name: mumble
         docker:
           name: mumble
-          image: dcshock/docker-mumble-server
+          image: mattikus/murmur #dcshock/docker-mumble-server
           state: started
           ports:
             - "64738:64738/udp"

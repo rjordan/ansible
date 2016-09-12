@@ -1,33 +1,36 @@
 # BOXEN
-megatraveler2.codecrusade.org
-ubuntu-dvr.codecrusade.org
-docker2.codecrusade.org
-traveler2.codecrusade.org
-deepspace9.codecrusade.org
-# lcars.codecrusade.org
-# megatraveler.codecrusade.org
+#megatraveler2.codecrusade.org
+#ubuntu-dvr.codecrusade.org
+#docker2.codecrusade.org
+#traveler2.codecrusade.org
+#deepspace9.codecrusade.org
+#lcars2.codecrusade.org
+#docker.codecrusade.org
+#megatraveler.codecrusade.org
 
 # GROUPS
-[dc-stl]
-traveler2.codecrusade.org
+[dc_stl]
+#traveler2.codecrusade.org
 megatraveler2.codecrusade.org
 ubuntu-dvr.codecrusade.org
-docker2.codecrusade.org
-# megatraveler.codecrusade.org
-# lcars.codecrusade.org
+#docker2.codecrusade.org
+lcars2.codecrusade.org
+docker.codecrusade.org
+megatraveler.codecrusade.org
 
-# [dc-gsc]
+[dc_gsc]
 deepspace9.codecrusade.org
 
 [docker]
-docker2.codecrusade.org
+#docker2.codecrusade.org
+docker.codecrusade.org
 ubuntu-dvr.codecrusade.org
 
 [workstations]
 megatraveler2.codecrusade.org
-traveler2.codecrusade.org
-# megatraveler.codecrusade.org
+#traveler2.codecrusade.org
+megatraveler.codecrusade.org
 
-[dev-boxes]
+[dev_boxes]
 megatraveler2.codecrusade.org
-# megatraveler.codecrusade.org
+megatraveler.codecrusade.org

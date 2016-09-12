@@ -8,6 +8,7 @@
       - rjordan.ubuntu-updates
       - rjordan.ssh
     tasks:
+      - group: name=docker
       - group:
           name: "{{item.name}}"
           gid: "{{item.gid}}"
@@ -20,6 +21,7 @@
           shell: /bin/bash
           password: "{{item.password}}"
         with_items: "{{domain_users}}"
+      - authorized_key: user=rjordan key=https://github.com/rjordan.keys  
       - name: Basic Packages
         apt:
           pkg: "{{item}}"
