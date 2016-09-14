@@ -5,8 +5,36 @@
   roles:
     - rjordan.docker
     - rjordan.nfs-client
-#  tasks:
-#    - mount: name=/srv/docker-data src=nfs.codecrusade.org:/srv/docker-data fstype=nfs4 opts=noatime state=mounted
+  tasks:
+    - lineinfile: 
+        dest: /etc/default/grub
+        regexp: ^GRUB_CMDLINE_LINUX_DEFAULT=
+        line: GRUB_CMDLINE_LINUX_DEFAULT="swapaccount=1"
+      notify: 
+        - update grub
+        #- reboot server
+ 
+    - copy:
+        src: docker.service
+        dest: /etc/systemd/system/docker.service
+      notify:
+        - reload systemd
+        - restart docker  
+      
+    - mount: 
+        name: /mnt/docker-data 
+        src: nfs.codecrusade.org:/srv/docker-data 
+        fstype: nfs4 
+        opts: noatime 
+        state: mounted
+        
+  handlers:
+    - name: update grub
+      shell: update-grub
+    - name: reload systemd
+      command: systemctl daemon-reload        
+    - name: restart docker
+      service: name=docker state=restarted enabled=true
 
 #- name: Consul
 #  hosts: dc-stl
@@ -16,10 +44,10 @@
 #  roles:
 #    - rjordan.consul
     
-- name: Fail2Ban
-  hosts: 
-    - ubuntu-dvr.codecrusade.org
-  become: true 
-  roles:
-    - franklinkim.fail2ban      
+#- name: Fail2Ban
+#  hosts: 
+#    - ubuntu-dvr.codecrusade.org
+#  become: true 
+#  roles:
+#    - franklinkim.fail2ban      
 

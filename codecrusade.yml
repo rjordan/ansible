@@ -1,7 +1,7 @@
 ---
-- include: basics.yml
-- include: servers.yml    
-- include: workstations.yml  
-- include: development.yml 
-- include: containers.yml
+  - include: basics.yml
+  - include: servers.yml    
+  - include: workstations.yml  
+  - include: development.yml 
+  - include: containers.yml
 
