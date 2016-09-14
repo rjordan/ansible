@@ -11,4 +11,9 @@
   --name mumble \
   mattikus/murmur
   
-  
+    docker service create \
+  --publish 25565:25565 \
+  --publish 8123:8123/udp \
+  --mount type=bind,src=/mnt/docker-data/minecraft/world1,dst=/minecraft \
+  --name minecraft1 \
+  docker.codecrusade.org:5000/bukkit

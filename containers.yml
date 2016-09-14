@@ -95,19 +95,6 @@
   - name: Containers Playbook
     hosts: docker.codecrusade.org
     tasks:           
-      - name: minecraft1
-        docker:
-          name: minecraft1
-          image: docker.codecrusade.org:5000/bukkit
-          state: started
-          insecure_registry: yes
-          env:
-            SERVICE_TAGS: kids
-          volumes:
-            - "/mnt/docker-data/minecraft/world1:/minecraft"
-          ports:
-            - "25565:25565"
-            - "8123:8123"
       - name: minecraft2
         docker:
           name: minecraft2
